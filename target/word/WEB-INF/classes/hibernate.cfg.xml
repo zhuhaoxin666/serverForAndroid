@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQL5InnoDBDialect
+        </property>
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+
+        <!-- Assume test is the database name -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost/words?serverTimezone=GMT
+        </property>
+
+        <!-- 最大连接数 -->
+        <property name="hibernate.c3p0.max_size">20</property>
+        <!-- 最小连接数 -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位秒 -->
+        <property name="hibernate.c3p0.timeout">120</property>
+        <!-- 最大的PreparedStatement的数量 -->
+        <property name="hibernate.c3p0.max_statements">100</property>
+        <!-- 每隔120秒检查连接池里的空闲连接，单位是秒-->
+        <property name="hibernate.c3p0.idle_test_period">120</property>
+        <!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        <!-- 每次都验证连接是否可用 -->
+        <property name="hibernate.c3p0.validate">true</property>
+
+        <property name="current_session_context_class">thread</property>
+
+        <property name="hibernate.connection.username">
+            zhx
+        </property>
+
+
+        <property name="hibernate.connection.password">
+            zhx990102
+        </property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+<!--        <property name="hbm2ddl.auto" >create(update)</property>-->
+        <property name="show_sql">true</property>
+        <!-- List of XML mapping files -->
+        <property name="format_sql">true</property>
+        <property name="javax.persistence.validation.mode">none</property>
+        <mapping resource="com/dao/entity/UserInfo.xml"></mapping>
+
+        <mapping resource="com/dao/entity/WordAndMeaning.xml"></mapping>
+    </session-factory>
+</hibernate-configuration>
+

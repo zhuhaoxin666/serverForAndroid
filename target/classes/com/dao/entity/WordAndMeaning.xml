@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.dao.entity.WordAndMeaning" table="word_and_meaning">
+        <id name="wordId" column="word_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="word" not-null="true" type="java.lang.String" column="word" length="20"/>
+        <property name="meaning" not-null="true" type="java.lang.String" column="meaing" length="50"/>
+        <many-to-one name="userInfo" class="com.dao.entity.UserInfo" column="user_id"/>
+    </class>
+</hibernate-mapping>

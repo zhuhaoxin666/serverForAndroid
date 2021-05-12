@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.dao.entity.UserInfo" table="user_info">
+        <id name="userId" type="java.lang.Integer" column="user_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" type="java.lang.String" unique="true" not-null="true" column="user_name" length="20"/>
+        <property name="age" type="java.lang.Integer" column="user_age" not-null="true" length="5"/>
+        <property name="motto" type="java.lang.String" column="user_motto" length="40"/>
+        <property name="password" type="java.lang.String" column="user_password" not-null="true" length="25"/>
+        <set name="set" table="word_and_meaning" inverse="true">
+            <key column="user_id"></key>
+            <one-to-many class="com.dao.entity.WordAndMeaning"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
